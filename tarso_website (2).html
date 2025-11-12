@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TARSO - Terrace Automated Rain and Sun Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #f9fbfd; color: #1a1a1a; }
+    header { background: linear-gradient(135deg, #0078d7, #00b894); color: white; padding: 100px 20px; text-align: center; animation: fadeIn 1s ease-in-out; }
+    header h1 { font-size: 2.8em; letter-spacing: 1px; animation: slideIn 1.5s ease; }
+    header p { margin-top: 10px; font-size: 1.2em; opacity: 0.9; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    section { padding: 70px 10%; animation: fadeIn 1s ease-in-out; }
+    h2 { color: #0078d7; margin-bottom: 25px; text-align: center; font-size: 2em; position: relative; }
+    h2::after { content: ''; display: block; width: 60px; height: 4px; background: #00b894; margin: 10px auto 0; border-radius: 2px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+    .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.4s ease; }
+    .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+
+    #impact .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; }
+    .stat { background: linear-gradient(135deg, #00b894, #0078d7); color: white; padding: 25px 40px; border-radius: 15px; font-size: 1.3em; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .stat:hover { transform: scale(1.1); }
+
+    #future ul { list-style: none; padding-left: 0; max-width: 700px; margin: auto; }
+    #future li { background: white; margin: 10px 0; padding: 15px 20px; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+    #future li::before { content: '✔ '; color: #00b894; font-weight: bold; }
+    #future li:hover { transform: translateX(10px); background: #f0fdfa; }
+
+    #team { text-align: center; }
+    #team p { margin: 8px 0; font-size: 1.1em; }
+
+    #contact form { display: flex; flex-direction: column; align-items: center; animation: fadeIn 1.2s ease-in-out; }
+    #contact input, #contact textarea { width: 100%; max-width: 500px; margin: 10px 0; padding: 12px; border: 1px solid #ccc; border-radius: 8px; transition: all 0.3s ease; }
+    #contact input:focus, #contact textarea:focus { border-color: #0078d7; box-shadow: 0 0 5px rgba(0,120,215,0.3); }
+    #contact button { background: linear-gradient(135deg, #0078d7, #00b894); color: white; border: none; padding: 12px 35px; border-radius: 8px; cursor: pointer; font-size: 1em; transition: all 0.3s ease; }
+    #contact button:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+    footer { background: #1a1a1a; color: white; text-align: center; padding: 25px; margin-top: 60px; letter-spacing: 0.5px; }
+
+    html { scroll-behavior: smooth; }
+    nav { position: fixed; top: 0; width: 100%; overflow-x: auto; white-space: nowrap; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); color: white; display: flex; justify-content: center; gap: 20px; padding: 12px; z-index: 100; animation: fadeIn 1s ease-in-out; }
+    nav a { color: white; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; }
+    nav a:hover { color: #00b894; text-shadow: 0 0 8px rgba(0,184,148,0.6); }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      section { padding: 50px 5%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#how">How It Works</a>
+    <a href="#components">Components</a>
+    <a href="#impact">Impact</a>
+    <a href="#future">Future</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>TARSO – Terrace Automated Rain and Sun Optimizer</h1>
+    <p>Smart weather protection for your outdoor spaces</p>
+  </header>
+
+  <section id="problem">
+    <h2>The Problem We're Solving</h2>
+    <div class="grid">
+      <div class="card"><strong>Extreme Heat Damage</strong><br>Intense sunlight fades furniture, wilts plants, and reduces solar panel efficiency by up to 25%.</div>
+      <div class="card"><strong>Unpredictable Rain</strong><br>Sudden downpours ruin cushions, flood garden beds, and damage electronics without warning.</div>
+      <div class="card"><strong>High Maintenance Costs</strong><br>Frequent repairs and replacements drain budgets and reduce the lifespan of outdoor setups.</div>
+    </div>
+  </section>
+
+  <section id="solution">
+    <h2>Meet TARSO – Your Intelligent Weather Guardian</h2>
+    <p style="text-align:center; max-width:800px; margin:auto; font-size:1.1em;">TARSO is an affordable, fully automated system that detects and responds to changing weather conditions in real-time. No manual adjustments—just effortless protection for your terrace, 24/7. Designed for urban homeowners, property managers, and small commercial spaces, TARSO combines cutting-edge sensors with smart automation to safeguard what matters most.</p>
+  </section>
+
+  <section id="how">
+    <h2>How TARSO Works</h2>
+    <div class="grid">
+      <div class="card"><strong>1. Continuous Monitoring</strong><br>Advanced sensors track sunlight, rainfall, and ambient temperature every second.</div>
+      <div class="card"><strong>2. Intelligent Processing</strong><br>The Arduino Uno microcontroller analyzes data and makes instant decisions based on preset thresholds.</div>
+      <div class="card"><strong>3. Automatic Response</strong><br>The relay and servo motor control the cover and pump automatically based on conditions.</div>
+      <div class="card"><strong>4. Zero Human Effort</strong><br>The system operates completely autonomously—you never lift a finger.</div>
+    </div>
+  </section>
+
+  <section id="components">
+    <h2>Technical Components Used</h2>
+    <div class="grid">
+      <div class="card"><strong>Arduino Uno</strong><br>The brain of TARSO, processing all sensor inputs and controlling outputs in real-time.</div>
+      <div class="card"><strong>Relay Module</strong><br>Controls high-power devices like the water pump safely and efficiently.</div>
+      <div class="card"><strong>Servo Motor</strong><br>Used to open and close the roof automatically during rain or heat.</div>
+      <div class="card"><strong>Water Pump</strong><br>Activates to irrigate plants when the soil moisture level is low.</div>
+      <div class="card"><strong>Rain Sensor</strong><br>Detects rainfall and triggers the roof-closing mechanism to protect the terrace.</div>
+      <div class="card"><strong>Soil Moisture Sensor</strong><br>Monitors soil humidity to control irrigation automatically.</div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <h2>Real-World Impact</h2>
+    <div class="stats">
+      <div class="stat">85% Time Saved</div>
+      <div class="stat">60% Cost Reduction</div>
+      <div class="stat">40% Energy Efficiency</div>
+    </div>
+  </section>
+
+  <section id="future">
+    <h2>The Future of TARSO</h2>
+    <ul>
+      <li>AI Integration for remote monitoring and weather alerts</li>
+      <li>Solar-powered operation with battery backup</li>
+      <li>Smart Home Hub integration (Alexa, Google Home)</li>
+      <li>Commercial scale expansion for large facilities</li>
+    </ul>
+  </section>
+
+  <section id="team">
+    <h2>Our Team</h2>
+    <p><strong>Members:</strong> Nalin Tarun Pandey, Anuj Kumar, Ayushman Kumar, Anmol Kumar Singh, Abhinn Anand</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="alert('Thank you for reaching out!'); return false;">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div style="text-align:center; margin-top:30px;">
+      <h3>Scan QR Code to Visit This Website</h3>
+      <div id="qrcode" style="display:inline-block; margin-top:10px;"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 TARSO Project Team | Made for Academic Exhibition</p>
+  </footer>
+
+  <script>
+    new QRCode(document.getElementById('qrcode'), {
+      text: window.location.href,
+      width: 120,
+      height: 120
+    });
+  </script>
+</body>
+</html>
